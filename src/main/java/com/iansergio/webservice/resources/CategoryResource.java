@@ -1,7 +1,7 @@
 package com.iansergio.webservice.resources;
 
-import com.iansergio.webservice.entities.User;
-import com.iansergio.webservice.services.UserService;
+import com.iansergio.webservice.entities.Category;
+import com.iansergio.webservice.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
-public class UserResource   {
+@RequestMapping ("/categories")
+public class CategoryResource {
 
     @Autowired
-    private UserService service;
+    private CategoryService service;
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll(){
+    public ResponseEntity<List<Category>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id){
+    public ResponseEntity<Category> findById(@PathVariable Long id){
         return ResponseEntity.ok(service.findById(id));
     }
 }

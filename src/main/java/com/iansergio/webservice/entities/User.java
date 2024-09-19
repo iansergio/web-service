@@ -1,9 +1,10 @@
 package com.iansergio.webservice.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -21,5 +22,9 @@ public class User {
     private String email;
     private String phone;
     private String password;
+
+    @Setter(AccessLevel.NONE)
+    @OneToMany(mappedBy = "client")
+    private List<Order> orders = new ArrayList<>();
 
 }
